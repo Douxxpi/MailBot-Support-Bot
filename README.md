@@ -15,7 +15,7 @@ For creating a bot, you have to:
 
 ## Setup the code
 
-You can found the code of the bot into the support.py file. You need python and discord.py installed to run the bot.
+You can found the code of the bot into the [support.py](https://github.com/Douxxpi/MailBot-Support-Bot/blob/main/support.py) file. You need python and discord.py installed to run the bot.
 
 1. Take your suggestions channel id (the channel where /suggest suggestions will appear) and define it on line 41. Same for your ads channel id (line 40).
 2. Put the correct links for the lines 42, 43 and 44.
