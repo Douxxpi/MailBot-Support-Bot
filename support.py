@@ -1,7 +1,3 @@
-# CODE BY DOUXX.XYZ
-# https://douxx.xyz/contact
-
-
 import discord
 from discord.ext import commands, tasks
 
@@ -33,16 +29,19 @@ class Bot(commands.Bot):
 ╚═╝     ╚═╝╚═╝  ╚═╝╚═╝╚══════╝╚═════╝  ╚═════╝    ╚═╝   support
               """)
         print("BY douxx.xyz")
-        print(f"[READY] Logged in as {self.user}") #The ready is for pterodactyl
+        print(f"Logged in as {self.user}")
         change_status.start()
-        print(f"[INFO] add me: https://discord.com/api/oauth2/authorize?client_id={self.user.id}&permissions=30781964549367&scope=bot")
+        print(f"add me: https://discord.com/api/oauth2/authorize?client_id={self.user.id}&permissions=30781964549367&scope=bot")
         await self.tree.sync()
 
 intents = discord.Intents.all()
 bot = Bot(intents=intents)
 
-pub_chan = YOUR AD CHANNEL ID HERE 
-sug_chan =  YOUR SUGGESTIONS CHANNEL ID HERE
+pub_chan = 1217562443006611587 
+sug_chan =  1217562446244614174
+topgg_link = "Your top.gg link"
+ad_rules_message = "the link to your rules"
+ticket = "link to your tickets"
 
 
 @bot.hybrid_command(name='suggest', description='Make a suggestion')
@@ -55,7 +54,7 @@ async def suggestion_command(interaction: discord.Interaction, suggestion: str):
         color=discord.Color.dark_blue()
     )
 
-    embed.set_footer(text='\N{LARGE GREEN CIRCLE} Accept | \N{LARGE ORANGE CIRCLE} Pending | \N{LARGE RED CIRCLE} Reject')
+    embed.set_footer(text='\N{LARGE GREEN CIRCLE} Yes | \N{LARGE ORANGE CIRCLE} I don\'t know | \N{LARGE RED CIRCLE} No')
     embed.set_author(name=interaction.author.display_name, icon_url=interaction.author.avatar.url if interaction.author.avatar else bot.user.avatar.url)
 
     msg = await channel.send(embed=embed)
@@ -71,15 +70,15 @@ async def suggestion_command(interaction: discord.Interaction, suggestion: str):
 async def pub_reply(message):
     if message.channel.id == pub_chan and message.author != bot.user:
         embed = discord.Embed(
-            description="""**💡 You too, share your ad by [voting on Top.gg](https://top.gg/bot/1217516172719947847) !**""",
+            description=f"""**💡 You too, share your ad by [voting on Top.gg]({topgg_link}) !**""",
             color=discord.Color.dark_blue()
         )
-        embed.add_field(name="Options", value="[`Rules`](https://discord.com/channels/1217557763971088556/1218242133904064582/1218245740682416229) | [`Report this ad`](https://discord.com/channels/1217557763971088556/1217562457934135416/1217581582408220743)")
+        embed.add_field(name="Options", value=f"[`Rules`]({ad_rules_message}) | [`Report this ad`]({ticket})")
         await message.reply(embed=embed, mention_author=False)
 
         embed_priv = discord.Embed(
             title="⚠️ Reminder",
-            description=f"All ads posted in the {message.jump_url} channel must comply with **[these rules](https://discord.com/channels/1217557763971088556/1218242133904064582/1218245740682416229)** or they will be deleted.",
+            description=f"All ads posted in the {message.jump_url} channel must comply with **[these rules]({ad_rules_message})** or they will be deleted.",
             color=discord.Color.dark_blue()
         )
         await message.author.send(embed=embed_priv)
@@ -93,3 +92,7 @@ async def on_message(message):
     await pub_reply(message)
 
 bot.run(TOKEN)
+
+
+#CODE BY DOUXX.XYZ
+#CONTACT ME: https://douxx.xyz/contact
